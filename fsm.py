@@ -77,12 +77,14 @@ class TocMachine(GraphMachine):
 
     def on_enter_chat1(self, update):
         update.message.reply_photo(open("state_diagram.png","rb"))
+        self.go_back(update)
 
     def on_exit_chat1(self, update):
         print('Leaving chat1')
 
     def on_enter_chat2(self, update):
         update.message.reply_audio(open("output.ogg","rb"))
+        self.go_back(update)
 
     def on_exit_chat2(self, update):
         print('Leaving chat2')

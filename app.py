@@ -122,16 +122,15 @@ machine = TocMachine(
         {
             'trigger': 'go_back',
             'source': [
-                'state2',
+                'chat1',
+                'chat2'
             ],
-            'dest': 'state1'
+            'dest': 'user'
         },
         {
             'trigger': 'go_back',
             'source': [
-                'state10',
-                'chat1',
-                'chat2',
+                'state10'
             ],
             'dest': 'state1'
         },
