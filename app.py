@@ -15,6 +15,8 @@ bot = telegram.Bot(token=API_TOKEN)
 machine = TocMachine(
     states=[
         'user',
+        'chat1',
+        'chat2',
         'state1',
         'state2',
 		'state3',
@@ -32,6 +34,18 @@ machine = TocMachine(
             'source': 'user',
             'dest': 'state1',
             'conditions': 'is_going_to_state1'
+        },
+        {#user to state1
+            'trigger': 'advance',
+            'source': 'user',
+            'dest': 'chat1',
+            'conditions': 'is_going_to_chat1'
+        },
+        {#user to state1
+            'trigger': 'advance',
+            'source': 'user',
+            'dest': 'chat2',
+            'conditions': 'is_going_to_chat2'
         },
         {#state1 to state2
             'trigger': 'advance',
@@ -116,12 +130,15 @@ machine = TocMachine(
             'trigger': 'go_back',
             'source': [
                 'state10',
+                'chat1',
+                'chat2',
             ],
             'dest': 'state1'
         },
         {
             'trigger': 'go_back',
             'source': [
+
                 'state3',
                 'state4',
                 'state5',
@@ -167,3 +184,4 @@ if __name__ == "__main__":
     _set_webhook()
     machine.get_graph().draw('state_diagram.png', prog = 'dot')
     app.run()
+

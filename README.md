@@ -46,8 +46,10 @@ python3 app.py
 ## Usage
 The initial state is set to `user`.
 
-總共有user+其他10個states
+總共有user, chat1, chat2和其他10個states
 * user輸入"嗨" ->進入state1
+* user輸入"show fsm" ->進入chat1，印出state diagram
+* user輸入"簡單介紹一下你自己" ->進入chat2，她會簡單介紹她自己
 * state1輸入"查賽程"->進入state2
 * state1輸入"查戰績"->進入state10，印出當前戰績
 

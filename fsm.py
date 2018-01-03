@@ -19,6 +19,15 @@ class TocMachine(GraphMachine):
         if text.lower() == 'bye':
             update.message.reply_text("ㄅㄅ")
             return 1
+    def is_going_to_chat1(self, update):
+        text = update.message.text
+        if text.lower() == 'show fsm':
+            return 1
+
+    def is_going_to_chat2(self, update):
+        text = update.message.text
+        if text.lower() == '簡單介紹一下你自己':
+            return 1
 
     def is_going_to_state1(self, update):
         text = update.message.text
@@ -65,6 +74,18 @@ class TocMachine(GraphMachine):
         text = update.message.text
         if text.lower() == '查戰績':
             return 1
+
+    def on_enter_chat1(self, update):
+        update.message.reply_photo(open("state_diagram.png","rb"))
+
+    def on_exit_chat1(self, update):
+        print('Leaving chat1')
+
+    def on_enter_chat2(self, update):
+        update.message.reply_audio(open("output.ogg","rb"))
+
+    def on_exit_chat2(self, update):
+        print('Leaving chat2')
     
     def on_enter_state1(self, update):
         update.message.reply_text("你好!我可以為你做什麼呢？")
